@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    color: rgb(255, 255, 255);
+    font-family: 'spectral', serif;
+}
+
+/* header */
+
+.header-wrapper{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(-45deg, #F51409, #DB0F04, #A80C03, #5C0502, #5C1613);
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: backgroundtransition 8s ease-in-out infinite;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.social-media {
+    margin-top: 1rem;
+    display: flex;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    padding: 1rem 4rem;
+    border: 1px solid white;
+    min-width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s cubic-bezier(.55, .025, .675, .97);
+}
+
+a:hover {
+    color:#A80C03;
+    background-color: white;
+}
+
+@keyframes backgroundtransition {
+    0%{
+        background-position: 0% 80%;
+    }
+    50%{
+        background-position: 80% 100%;
+    }
+    100%{
+        background-position: 0% 90%;
+    }
+}
+
+/* Menu hamburger */
+
+.checkbox-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.checkbox{
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 400ms ease-in-out 0s;
+}
+
+.checkbox .trace {
+    width: 50px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    border-radius: 4px;
+    transition: 0.5s ease-in-out;
+}
+
+.checkbox .trace:nth-child(1) {
+    top: 26px;
+    transform: rotate(0);
+}
+
+.checkbox .trace:nth-child(2) {
+    top: 46px;
+    transform: rotate(0);
+}
+
+.checkbox .trace:nth-child(3) {
+    top: 66px;
+    transform: rotate(0);
+}
+
+#toggle {
+    display: none;
+}
+
+/* menu */
+
+.menu {
+    position: absolute;
+    top: 28px;
+    right: 30px;
+    background: rgb(206, 204, 204);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px rgb(206, 204, 204);
+    z-index: -1;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-items {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s;
+}
+
+.menu-items ul {
+    list-style-type: none;
+}
+
+.menu-items ul li a{
+    margin: 10px 0;
+    color: #A80C03;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 40px;
+}
+
+/* animação do menu */
+
+#toggle:checked + .checkbox .trace:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: #A80C03;
+    top: 47px;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(2) {
+    transform: translateX(-100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: #A80C03;
+    top: 47px;
+}
+
+#toggle:checked + .checkbox {
+    background-color: rgb(206, 204, 204);
+}
+
+#toggle:checked ~ .menu {
+    box-shadow: 0 0 0 100vmax rgb(206, 204, 204);
+    z-index: 1;
+}
+
+#toggle:checked ~.menu-items {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Home-cards */
+
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.card {
+    height: 300px;
+    width: 400px;
+    margin: 3rem 0 0;
+    background-image: url(data:image/jpeg;base64,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);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale();
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card-text {
+    width: 40%;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    color:rgb(78, 78, 78);
+}
+
+.card-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-wrapper::before {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper p {
+    font-size: 0;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.card:hover {
+    filter: none;
+}
+
+.card:hover > .card-wrapper::before {
+    opacity: 1;
+    width: 350px;
+    height: 250px;
+}
+
+.card:hover > .card-wrapper p {
+    font-size: 14px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* footer */
+
+.footer {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A80C03;
+}
+
+/* responsive */
+
+@media (max-width: 800px) {
+    .social-media {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        margin-top: 0;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .container .card-container:nth-child(1),
+    .container .card-container:nth-child(1){
+        flex-direction: column-reverse;
+    }
+
+    .card {
+        height: 250px;
+        width: 250px;
+    }
+
+    .card-text {
+        width: 90%;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .card:hover > .card-wrapper::before {
+        height: 190px;
+        width: 190px;
+    }
+}
